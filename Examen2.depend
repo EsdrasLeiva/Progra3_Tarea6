@@ -349,3 +349,40 @@
 	"Evaluador.h"
 	"NodoNario.h"
 
+1459445534 source:c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\evaluador.cpp
+	"Evaluador.h"
+
+1459445534 c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\evaluador.h
+	"Pais.h"
+	"NodoNario.h"
+	<iostream>
+	<stack>
+	<queue>
+	<set>
+	<map>
+	<list>
+
+1459445534 c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\pais.h
+	<iostream>
+
+1459445534 c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\nodonario.h
+	<vector>
+
+1459445534 source:c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\nodonario.cpp
+	"NodoNario.h"
+
+1459445534 source:c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\pais.cpp
+	"Pais.h"
+
+1505085261 source:c:\users\ariel_leiva\desktop\todoprogra3\clase_progra\parcial ii progra\examen2dragon-master\progra3_tarea6\main.cpp
+	<iostream>
+	<list>
+	<fstream>
+	<stack>
+	<queue>
+	<set>
+	<map>
+	"Pais.h"
+	"Evaluador.h"
+	"NodoNario.h"
+

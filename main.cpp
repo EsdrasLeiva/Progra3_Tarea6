@@ -52,42 +52,105 @@ Pais* leer(string nombre_archivo, int posicion)
 //Nota: Los registros se deben de haber guardado previamente con la funcion escribir()
 int contarHispanohablantes(string nombre_archivo)
 {
-    ifstream in(nombre_archivo.c_str(), ios::ate);
-    int cantidad_habitantes_espanol = in.tellg()/TAMANO_DE_REGISTRO;
-    in.close();
-
-    double suma = 0;
-    for(int i=0; i<cantidad_habitantes_espanol; i++)
+    ifstream in(nombre_archivo.c_str());
+    in.seekg(0,ios::end);
+    int cantidad_registros = in.tellg()/25;
+    int contador_hispanos= 0;
+    for(int i=0;i<cantidad_registros;i++)
     {
-        suma+=leer(nombre_archivo, i)->habitantes;
+        Pais *pais=leer(nombre_archivo,i);
+        if(pais->hablan_espanol)
+        {
+           contador_hispanos+=pais->habitantes;
+        }
+
     }
-    return suma/cantidad_habitantes_espanol;
+    return contador_hispanos;
 }
 
 //Devuelve un set que contenga los numeros fibonacci.
 //La cantidad de numeros que contiene se determina por el parametro "cantidad"
 set<int> getNumerosFibonacci(int cantidad)
 {
+
+    int anterior1=0,anterior2=0;;
+
     set<int>respuesta;
+    for(int i=0;i<cantidad;i++){
+        if(i==0){
+            respuesta.insert(0);
+        }
+        else if(i==1){
+            respuesta.insert(1);
+            anterior1=1;
+        }
+        else{
+            int num=anterior1+anterior2;
+            respuesta.insert(num);
+            anterior2=anterior1;
+            anterior1=num;
+        }
+    }
+
     return respuesta;
 }
 
 //Devuelve la cantidad de letras mayusculas presentes en "a" y "b"
 int contarMayusculas(stack<char> a,queue<char> b)
 {
-    return -1;
+    int ma=0;
+    int mb=0;
+    while(!a.empty()){
+
+        if(a.top()=='A'||a.top()=='B'||a.top()=='C'||a.top()=='D'||a.top()=='F'||a.top()=='G'||a.top()=='H'||a.top()=='I'||
+           a.top()=='J'||a.top()=='K'||a.top()=='L'||a.top()=='M'||a.top()=='N'||a.top()=='O'||a.top()=='P'||a.top()=='Q'
+           ||a.top()=='R'||a.top()=='S'||a.top()=='T'||a.top()=='U'||a.top()=='V'||a.top()=='W'||a.top()=='X'||a.top()=='Y'
+           ||a.top()=='Z'){
+
+            ma++;
+
+           }
+        a.pop();
+    }
+
+    while(!b.empty()){
+
+        if(b.front()=='A'||b.front()=='B'||b.front()=='C'||b.front()=='D'||b.front()=='F'||b.front()=='G'||b.front()=='H'||b.front()=='I'||
+           b.front()=='J'||b.front()=='K'||b.front()=='L'||b.front()=='M'||b.front()=='N'||b.front()=='O'||b.front()=='P'||b.front()=='Q'
+           ||b.front()=='R'||b.front()=='S'||b.front()=='T'||b.front()=='U'||b.front()=='V'||b.front()=='W'||b.front()=='X'||b.front()=='Y'
+           ||b.front()=='Z'){
+
+               mb++;
+
+            }
+        b.pop();
+    }
+
+
+    return ma+mb;
 }
 
 //Devuelve la cantidad de llaves repetidas en "mi_multimapa"
 //Nota: No devuelve la cantidad de repeticines
 int contarLLavesRepetidas(multimap<string,string>mi_multimapa)
 {
-    return -1;
+    map<string,string> mi_mapa;
+    for(multimap<string,string>::iterator i= mi_multimapa.begin(); i!= mi_multimapa.end(); i++)
+    {
+        pair<string,string>par_actual = *i;
+        mi_mapa [par_actual.first] = par_actual.second;
+    }
+    int repetidas = (mi_multimapa.size() - mi_mapa.size());
+    return repetidas;
 }
 
 //Devuelve true si y solo si "buscado" existe en el arbol nario "raiz"
 bool existe(NodoNario* raiz,int buscado)
 {
+    if(raiz!=NULL){
+        //vector<NodoNario>::iterator ite = raiz->hijos.begin;
+        //for(int con=0;)
+    }
     return false;
 }
 
@@ -109,6 +172,14 @@ void buscarYReemplazar(NodoNario* raiz, int buscado, int reemplazo)
 vector<char> obtenerSecuencia()
 {
     vector<char>respuesta;
+    respuesta.push_back(1);
+    respuesta.push_back(2);
+    respuesta.push_back(4);
+    respuesta.push_back(8);
+    respuesta.push_back(16);
+    respuesta.push_back(32);
+    respuesta.push_back(64);
+    respuesta.push_back(128);
     return respuesta;
 }
 
