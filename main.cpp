@@ -98,8 +98,8 @@ set<int> getNumerosFibonacci(int cantidad)
 //Devuelve la cantidad de letras mayusculas presentes en "a" y "b"
 int contarMayusculas(stack<char> a,queue<char> b)
 {
-    int ma=0;
-    int mb=0;
+    int mas=0;
+    int menos=0;
     while(!a.empty()){
 
         if(a.top()=='A'||a.top()=='B'||a.top()=='C'||a.top()=='D'||a.top()=='F'||a.top()=='G'||a.top()=='H'||a.top()=='I'||
@@ -107,27 +107,23 @@ int contarMayusculas(stack<char> a,queue<char> b)
            ||a.top()=='R'||a.top()=='S'||a.top()=='T'||a.top()=='U'||a.top()=='V'||a.top()=='W'||a.top()=='X'||a.top()=='Y'
            ||a.top()=='Z'){
 
-            ma++;
+            mas++;
 
            }
         a.pop();
     }
 
     while(!b.empty()){
-
         if(b.front()=='A'||b.front()=='B'||b.front()=='C'||b.front()=='D'||b.front()=='F'||b.front()=='G'||b.front()=='H'||b.front()=='I'||
            b.front()=='J'||b.front()=='K'||b.front()=='L'||b.front()=='M'||b.front()=='N'||b.front()=='O'||b.front()=='P'||b.front()=='Q'
            ||b.front()=='R'||b.front()=='S'||b.front()=='T'||b.front()=='U'||b.front()=='V'||b.front()=='W'||b.front()=='X'||b.front()=='Y'
            ||b.front()=='Z'){
 
-               mb++;
-
+               menos++;
             }
         b.pop();
     }
-
-
-    return ma+mb;
+    return mas+menos;
 }
 
 //Devuelve la cantidad de llaves repetidas en "mi_multimapa"
@@ -147,9 +143,17 @@ int contarLLavesRepetidas(multimap<string,string>mi_multimapa)
 //Devuelve true si y solo si "buscado" existe en el arbol nario "raiz"
 bool existe(NodoNario* raiz,int buscado)
 {
-    if(raiz!=NULL){
-        //vector<NodoNario>::iterator ite = raiz->hijos.begin;
-        //for(int con=0;)
+    if(raiz == NULL)
+        return false;
+    if(raiz -> valor == buscado){
+            return true;
+    }else{
+        for(int hijo = 0; hijo < raiz -> hijos.size(); hijo ++){
+            bool b = existe(raiz -> hijos[hijo], buscado);
+            if(b){
+                return true;
+            }
+        }
     }
     return false;
 }
@@ -157,7 +161,18 @@ bool existe(NodoNario* raiz,int buscado)
 //Busca el valor "buscado" en el arbol "raiz" y lo reemplaza con "reemplazo"
 void buscarYReemplazar(NodoNario* raiz, int buscado, int reemplazo)
 {
-
+    if(raiz == NULL)
+        return;
+    if(raiz -> valor == buscado){
+            raiz -> valor = reemplazo;
+    }else{
+        for(int hijo = 0; hijo < raiz -> hijos.size(); hijo ++){
+            bool b = existe(raiz -> hijos[hijo], buscado);
+            if(b){
+                raiz -> hijos[hijo] -> valor = reemplazo;
+            }
+        }
+    }
 }
 
 //Devuelve un vector que contenga la siguiente secuencia binaria:
