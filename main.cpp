@@ -161,19 +161,16 @@ bool existe(NodoNario* raiz,int buscado)
 //Busca el valor "buscado" en el arbol "raiz" y lo reemplaza con "reemplazo"
 void buscarYReemplazar(NodoNario* raiz, int buscado, int reemplazo)
 {
-    if(raiz == NULL)
-        return;
-    if(raiz -> valor == buscado){
-            raiz -> valor = reemplazo;
+    if(raiz -> valor == buscado)
+    {
+        raiz -> valor = reemplazo;
     }else{
-        for(int hijo = 0; hijo < raiz -> hijos.size(); hijo ++){
-            bool b = existe(raiz -> hijos[hijo], buscado);
-            if(b){
-                raiz -> hijos[hijo] -> valor = reemplazo;
-            }
+        for(int hijo = 0; hijo < raiz -> hijos.size(); hijo ++)
+        {
+            buscarYReemplazar(raiz->hijos[hijo], buscado,reemplazo);
+        }
         }
     }
-}
 
 //Devuelve un vector que contenga la siguiente secuencia binaria:
 //00000001
